@@ -18,3 +18,7 @@ end
 post '/form' do
   erb :form_output
 end
+
+get '/table' do
+  erb :table
+end

@@ -18,6 +18,10 @@ end
 
 private
 
+def response_body
+  current_page.body
+end
+ 
 def form
   current_page.forms.first
 end

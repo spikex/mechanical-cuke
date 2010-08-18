@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
 
 require 'mechanical-cuke'
+require 'cucumber/web/tableish'
 
 require 'test/unit/assertions'
 
