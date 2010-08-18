@@ -5,14 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "mechanical-cuke"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A Mechanize driver for Cucumber}
+    gem.description = %Q{A Mechanize driver for Cucumber.  Provides step definitions for driving web applications using Mechanize.}
     gem.email = "spike@indra.com"
     gem.homepage = "http://github.com/spikex/mechanical-cuke"
     gem.authors = ["Spike Ilacqua"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.add_development_dependency "cucumber", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_runtime_dependency 'mechanize', '>= 1.0.0'
+    gem.add_runtime_dependency "cucumber", ">= 0.8.5"
+    gem.add_development_dependency "open4", ">= 0.9.6"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
@@ -43,16 +43,16 @@ task :test => :check_dependencies
 
 begin
   require 'cucumber/rake/task'
-  Cucumber::Rake::Task.new(:features)
+  Cucumber::Rake::Task.new(:cucumber)
 
-  task :features => :check_dependencies
+  task :cucumber => :check_dependencies
 rescue LoadError
-  task :features do
+  task :cucumber do
     abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
   end
 end
 
-task :default => :test
+task :default => :cucumber
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
