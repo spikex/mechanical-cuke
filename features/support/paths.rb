@@ -11,6 +11,8 @@ module NavigationHelpers
       '/form'
     when /the table page/
       '/table'
+    when /the upload page/
+      '/upload'
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

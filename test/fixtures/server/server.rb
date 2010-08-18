@@ -22,3 +22,17 @@ end
 get '/table' do
   erb :table
 end
+
+get '/upload' do
+  erb :upload_form
+end
+
+post '/upload' do
+  unless params[:upload] &&
+      (tmpfile = params[:upload][:tempfile]) &&
+      (name = params[:upload][:filename])
+    "No file selected"
+  else
+    "File #{name} uploaded"
+  end
+end

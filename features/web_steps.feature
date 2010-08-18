@@ -48,7 +48,14 @@ Feature: Using Mechanize
     And I should see "ID-ed"
 
 @mock_launchy
-  Scenario: Navigation Steps
+  Scenario: Save and Open Step
     Given I am on the index page
     Then show me the page
+
+  Scenario: Attach File Step
+    Given I am on the upload page
+    When I attach the file "test/fixtures/hello.txt" to "upload"
+    And I press "Submit"
+    Then I should see "File hello.txt uploaded"
+
 

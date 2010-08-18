@@ -45,6 +45,10 @@ When /^(?:|I )choose "([^\"]*)"$/ do |field|
   r.check
 end
 
+When /^(?:|I )attach the file "([^\"]*)" to "([^\"]*)"$/ do |path, field|
+  form.file_upload_with(:name => field).file_name = path
+end
+
 Then /^(?:|I )should see "([^\"]*)"$/ do |text|
   if defined?(Spec::Rails::Matchers)
     response.should contain(text)
