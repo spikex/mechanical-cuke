@@ -46,6 +46,10 @@ begin
   Cucumber::Rake::Task.new(:cucumber)
 
   task :cucumber => :check_dependencies
+
+  Cucumber::Rake::Task.new(:wip, 'Run features that are in progress') do |t| 
+    t.cucumber_opts = "--tags @wip:3 --wip features"
+  end
 rescue LoadError
   task :cucumber do
     abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
