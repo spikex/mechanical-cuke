@@ -8,19 +8,28 @@ module MechanicalCuke
     def configure
       yield self
     end
-# TODO: try def get blah blah
+  end
+
+  def mechanize
+    @mechanize ||= Mechanize.new
+  end
+
+  def get(url)
+    mechanize.get(url)
+  end
+
+  def current_page
+    mechanize.current_page
+  end
+
+  def response_body
+    current_page.body
   end
 end
 
-World do
-  session = Mechanize.new
-end
+World(MechanicalCuke)
 
 private
-
-def response_body
-  current_page.body
-end
  
 def form
   current_page.forms.first
