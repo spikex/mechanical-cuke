@@ -100,6 +100,14 @@ bc. Then show me the page
 
 Save the current page and open in the default browser.
 
+h2. Basic Auth
+
+You can provide basic auth credentials by calling:
+
+bc. basic_auth(username,password)
+
+in your step definitions before visiting a protected page.
+
 h2. Todo
 
 Add scopes to allow steps to function within an element e.g:

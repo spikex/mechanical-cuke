@@ -25,6 +25,10 @@ module MechanicalCuke
   def response_body
     current_page.body
   end
+
+  def basic_auth(username,password)
+    mechanize.basic_auth(username,password)
+  end
 end
 
 World(MechanicalCuke)

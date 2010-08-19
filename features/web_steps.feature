@@ -59,6 +59,12 @@ Feature: Using Mechanize
     And I should see "Named"
     And I should see "ID-ed"
 
+  Scenario: Basic Auth
+    Given I have no basic auth credentials
+    Then I should not be able to access the protected page
+    Given I have basic auth credentials "username:password"
+    When I go to the protected page
+    Then I should see "Authorized!"
     
 @mock_launchy
   Scenario: Save and Open Step

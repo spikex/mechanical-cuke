@@ -36,3 +36,15 @@ post '/upload' do
     "File #{name} uploaded"
   end
 end
+
+get '/protected' do
+  auth = Rack::Auth::Basic::Request.new(request.env)
+  if auth.provided? && auth.basic? && auth.credentials &&
+      auth.credentials == ['username', 'password']
+    "Authorized!"
+  else
+    response['WWW-Authenticate'] = %(Basic realm="Protected")
+    throw :halt, [ 401, 'Authorization Required' ]
+  end
+end
+
