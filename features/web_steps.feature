@@ -26,6 +26,8 @@ Feature: Using Mechanize
     And I fill in "Password by Label" with "Password Text"
     And I select "Option Two" from "Select by Name"
     And I choose "Radio Button One" 
+    And I check "Unchecked Box"
+    And I uncheck "Checked Box"
     And I press "Submit"
     Then I should see "Label Field"
     And I should see "Name Field"
@@ -35,6 +37,8 @@ Feature: Using Mechanize
     And I should see "Radio Button One Chosen"
     But I should not see "Option One"
     And I should not see "Radio Button Two Chosen"
+    And I should see "Unchecked Box Checked"
+    But I should not see "Checked Box Checked"
 
   Scenario: Form Table Steps
     Given I am on the form page
@@ -47,6 +51,7 @@ Feature: Using Mechanize
     And I should see "Named"
     And I should see "ID-ed"
 
+    
 @mock_launchy
   Scenario: Save and Open Step
     Given I am on the index page

@@ -77,3 +77,22 @@ def find_radiobutton(field)
 
   return nil
 end
+
+def find_checkbox(field)
+  # Search by id
+  if (node = find_by_id(field))
+    return form.checkbox_with(:node => node.first)
+  end
+
+  # Then by name
+  if (f = form.checkbox_with(:name => field))
+    return f
+  end
+  
+  # And finally by label
+  if (node = find_by_label(field))
+    return form.checkbox_with(:node => node)
+  end
+
+  return nil
+end

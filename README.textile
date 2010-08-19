@@ -1,4 +1,4 @@
-h1. mechanical-cuke
+h1. Mechanical Cuke
 
 mechanical-cuke re-implements the Cucumber step definitions provided
 by cucumber-rails in web_steps.rb in Mechanize.  This allows Cucumber
@@ -74,7 +74,7 @@ field.
 bc. When I check "field"
 When I uncheck "field"
 
-Check or uncheck "_field_".  PENDING
+Check or uncheck the checkbox "_field_".
 
 bc. When I choose "field"
 
@@ -83,7 +83,7 @@ the label for the field; the field name would be ambiguous.
 
 When I attach the file "path" to "field"
 
-Attach the file in _path_ to the file field _field_.  PENDING
+Attach the file in _path_ to the file field _field_.
 
 bc. Then I should see "text"
 Then I should see /regexp/
@@ -113,7 +113,13 @@ bc. Then show me the page
 
 Save the current page and open in the default browser.
 
-h2. Authors
+h2. Todo
+
+Add scopes to allow steps to function within an element e.g:
+
+bc. When I press "Submit" within "#login_form"
+
+h2. Author
 
 Spike Ilacqua
 

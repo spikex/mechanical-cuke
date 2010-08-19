@@ -39,6 +39,17 @@ When /^(?:|I )select "([^\"]*)" from "([^\"]*)"$/ do |value, field|
   f.option_with(:value => value).select
 end
 
+
+When /^(?:|I )check "([^\"]*)"$/ do |field|
+  cb = find_checkbox(field)
+  cb.checked = true
+end
+
+When /^(?:|I )uncheck "([^\"]*)"$/ do |field|
+  cb = find_checkbox(field)
+  cb.checked = false
+end
+
 When /^(?:|I )choose "([^\"]*)"$/ do |field|
   r = find_radiobutton(field)
   raise "Can't find radio button \"#{field}\"" if r.nil?
