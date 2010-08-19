@@ -40,6 +40,14 @@ Feature: Using Mechanize
     And I should see "Unchecked Box Checked"
     But I should not see "Checked Box Checked"
 
+  Scenario: Form Value Steps
+    Given I am on the form page
+    Then the "Checked Box" checkbox should be checked
+    And the "Unchecked Box" checkbox should not be checked
+    When I fill in "Field by Label" with "Label Field"
+    Then the "Field by Label" field should contain "Label Field"
+    And the "Field by Label" field should not contain "Oogy Boogy"
+
   Scenario: Form Table Steps
     Given I am on the form page
     When I fill in the following:

@@ -95,6 +95,42 @@ But /^(?:|I )should not see "([^\"]*)"$/ do |text|
   end
 end
 
+Then /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
+  f = find_field(field)
+  if defined?(Spec::Rails::Matchers)
+    f.should == field
+  else
+    assert_equal value, f.value
+  end
+end
+
+Then /^the "([^\"]*)" field should not contain "([^\"]*)"$/ do |field, value|
+  f = find_field(field)
+  if defined?(Spec::Rails::Matchers)
+    f.should_not == value
+  else
+    assert_not_equal value, f.value
+  end
+end
+
+Then /^the "([^\"]*)" checkbox should be checked$/ do |label|
+  cb = find_checkbox(label)
+  if defined?(Spec::Rails::Matchers)
+    cb.checked.should be true
+  else
+    assert cb.checked
+  end
+end
+
+Then /^the "([^\"]*)" checkbox should not be checked$/ do |label|
+  cb = find_checkbox(label)
+  if defined?(Spec::Rails::Matchers)
+    cb.checked.should be true
+  else
+    assert !cb.checked
+  end
+end
+
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = current_page.uri.to_s
   if defined?(Spec::Rails::Matchers)

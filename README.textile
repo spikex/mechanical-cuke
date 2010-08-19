@@ -1,16 +1,10 @@
 h1. Mechanical Cuke
 
-mechanical-cuke re-implements the Cucumber step definitions provided
-by cucumber-rails in web_steps.rb in Mechanize.  This allows Cucumber
-features to be written for any site by running the tests over HTTP.
+mechanical-cuke re-implements the Cucumber step definitions provided by cucumber-rails' web_steps.rb in Mechanize.  This allows Cucumber features to be written for any site by running the tests over HTTP.
 
 h2. Rational
 
-Webrat and Capybara both can drive tests over HTML.  However, Webrat's
-Mechanize support is limited (doesn't work with multipart forms, can't
-submit empty form fields, no support for basis auth).  Capybara drives
-tests over HTTP using browsers, excellent for testing Javascript, but
-slow for test that only involve HTML.
+Webrat and Capybara both can drive tests over HTML.  However, Webrat's Mechanize support is limited (doesn't work with multipart forms, can't submit empty form fields, no support for basic auth).  Capybara drives tests over HTTP using browsers, excellent for testing Javascript, but slow for test that only involve HTML.
 
 h2. Usage
 
@@ -20,9 +14,7 @@ Add:
 
 to features/support/env.rb
 
-In features/support/paths.rb you will need to make sure you are
-returning the full URL.  The simplest way to do this is to add 'URL' +
-before the case statement in the path_to function e.g.:
+In features/support/paths.rb you will need to make sure you are returning the full URL.  The simplest way to do this is to add 'URL' + before the case statement in the path_to function e.g.:
 
 bc. def path_to(page_name)
     case page_name
@@ -42,7 +34,7 @@ GET the page at _path_ and sets it to the current page for follow steps.
 
 bc. When I press "button"
 
-Press button with label "_button_".  If the button is in a form
+Press button with label "_button_".  If the button is in a form the form is submitted.
 
 bc. When I follow "link"
 
@@ -51,9 +43,7 @@ Click the link with text "_link_".
 bc. When I fill in "field" with "value"
 When I fill in "value" for "field"
 
-Fill in the text field, password field, or text area _field_ with
-_value_.  _field_ can be the id or name of the field, or the text
-within the label for the field.
+Fill in the text field, password field, or text area _field_ with _value_.  _field_ can be the id or name of the field, or the text within the label for the field.
 
 bc. When I fill in the following:
 
@@ -67,9 +57,7 @@ bc. When I fill in the following:
 
 bc. When I select "value" from "field"
 
-Selects the option with _value_ from select list _field_.  _field_ can
-be the id or name of the field, or the text within the label for the
-field.
+Selects the option with _value_ from select list _field_.  _field_ can be the id or name of the field, or the text within the label for the field.
 
 bc. When I check "field"
 When I uncheck "field"
@@ -78,8 +66,7 @@ Check or uncheck the checkbox "_field_".
 
 bc. When I choose "field"
 
-Checks radio button _field_.  _field_ can be the id or the text within
-the label for the field; the field name would be ambiguous.
+Checks radio button _field_.  _field_ can be the id or the text within the label for the field; the field name would be ambiguous.
 
 When I attach the file "path" to "field"
 
@@ -98,12 +85,12 @@ The body of the page should *not* contain _text_ or _regexp_.
 bc. Then the "field" field should contain "value"
 Then the "field" field should not contain "value"
 
-The value _field_ should be (or not be) _value_.  PENDING
+The value _field_ should be (or not be) _value_.
 
 bc. Then the "_field_" checkbox should be checked
 Then the "_field_" checkbox not should be checked
 
-The checkbox _field_ should be (or not be) checked.  PENDING
+The checkbox _field_ should be (or not be) checked.
 
 bc. Then I should be on _path_
 
@@ -119,7 +106,8 @@ Add scopes to allow steps to function within an element e.g:
 
 bc. When I press "Submit" within "#login_form"
 
+Make Rspec support actually work.
+
 h2. Author
 
 Spike Ilacqua
-
