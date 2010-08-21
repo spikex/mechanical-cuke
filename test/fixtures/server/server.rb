@@ -48,3 +48,7 @@ get '/protected' do
   end
 end
 
+get '/blank_form' do
+  erb :blank_form
+end
+

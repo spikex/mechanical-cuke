@@ -6,8 +6,9 @@ When /^(?:|I )go to (.+)$/ do |page_name|
   get path_to(page_name)
 end
 
-When /^(?:|I )press "([^\"]*)"$/ do |name|
-  button = form.submits.find{|f| f.name == name}
+When /^(?:|I )press "([^\"]*)"$/ do |value|
+  button = form.submits.find{|f| f.value == value}
+  raise "Can't find button \"#{value}\"" if button.nil?
   form.click_button(button)
 end
 
@@ -36,17 +37,21 @@ end
 When /^(?:|I )select "([^\"]*)" from "([^\"]*)"$/ do |value, field|
   f = find_field(field)
   raise "Can't find field \"#{field}\"" if f.nil?
-  f.option_with(:value => value).select
+  option = f.option_with(:value => value)
+  raise "Can't find option #{value} for \"#{field}\"" if option.nil?
+  option.select
 end
 
 
 When /^(?:|I )check "([^\"]*)"$/ do |field|
   cb = find_checkbox(field)
+  raise "Can't find check box \"#{field}\"" if cb.nil?
   cb.checked = true
 end
 
 When /^(?:|I )uncheck "([^\"]*)"$/ do |field|
   cb = find_checkbox(field)
+  raise "Can't find check box \"#{field}\"" if cb.nil?
   cb.checked = false
 end
 

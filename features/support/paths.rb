@@ -15,6 +15,8 @@ module NavigationHelpers
       '/upload'
     when /the protected page/
       '/protected'
+    when /the blank form/
+      '/blank_form'
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"
