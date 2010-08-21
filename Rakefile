@@ -12,10 +12,10 @@ begin
     gem.authors = ["Spike Ilacqua"]
     gem.add_runtime_dependency 'mechanize', '>= 1.0.0'
     gem.add_runtime_dependency "cucumber", ">= 0.8.5"
+    gem.add_runtime_dependency "launchy", ">= 0.3.3"
     gem.add_development_dependency "open4", ">= 0.9.6"
     gem.add_development_dependency "cucumber-rails", ">= 0.2.4"
     gem.add_development_dependency "mocha", ">= 0.9.8"
-    gem.add_development_dependency "launchy", ">= 0.3.3"
     gem.add_development_dependency "sinatra", ">= 1.0"
   end
   Jeweler::GemcutterTasks.new
