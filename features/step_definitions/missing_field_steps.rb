@@ -13,7 +13,7 @@ When /^I (?:fill in|select|choose|check|press) a nonexistent (.+) an error shoul
     assert_raise(RuntimeError) do
       When %{I choose "nonexistent"}
     end
-  when "check box" then
+  when "checkbox" then
     assert_raise(RuntimeError) do
       When %{I check "nonexistent"}
     end
@@ -34,5 +34,25 @@ end
 When /^I select a missing option from an existing select an error should be raised$/ do
   assert_raise(RuntimeError) do
     When %{I select "nonexistent" from "Exists"}
+  end
+end
+
+When /^I test the value of a nonexistent field contains an error should be raised$/ do
+  assert_raise(RuntimeError) do
+    When %{the "nonexistent" field should contain "Anything"}
+  end
+
+  assert_raise(RuntimeError) do
+    When %{the "nonexistent" field should not contain "Anything"}
+  end
+end
+
+When /^I test state of a nonexistent checkbox contains an error should be raised$/ do
+  assert_raise(RuntimeError) do
+    When %{the "nonexistent" checkbox should be checked}
+  end
+
+  assert_raise(RuntimeError) do
+    When %{the "nonexistent" checkbox should not be checked}
   end
 end

@@ -104,6 +104,7 @@ end
 
 Then /^the "([^\"]*)" field should contain "([^\"]*)"$/ do |field, value|
   f = find_field(field)
+  raise "Can't find field \"#{field}\"" if f.nil?
   if defined?(Spec::Rails::Matchers)
     f.should == field
   else
@@ -113,6 +114,7 @@ end
 
 Then /^the "([^\"]*)" field should not contain "([^\"]*)"$/ do |field, value|
   f = find_field(field)
+  raise "Can't find field \"#{field}\"" if f.nil?
   if defined?(Spec::Rails::Matchers)
     f.should_not == value
   else
@@ -122,6 +124,7 @@ end
 
 Then /^the "([^\"]*)" checkbox should be checked$/ do |label|
   cb = find_checkbox(label)
+  raise "Can't find check box \"#{label}\"" if cb.nil?
   if defined?(Spec::Rails::Matchers)
     cb.checked.should be true
   else
@@ -131,6 +134,7 @@ end
 
 Then /^the "([^\"]*)" checkbox should not be checked$/ do |label|
   cb = find_checkbox(label)
+  raise "Can't find check box \"#{label}\"" if cb.nil?
   if defined?(Spec::Rails::Matchers)
     cb.checked.should be true
   else
