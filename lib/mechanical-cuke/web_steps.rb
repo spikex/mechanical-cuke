@@ -13,7 +13,9 @@ When /^(?:|I )press "([^\"]*)"$/ do |value|
 end
 
 When /^(?:|I )follow "([^\"]*)"$/ do |link|
-  current_page.link_with(:text => link).click
+  l = current_page.link_with(:text => link)
+  raise "Can't find link \"#{link}\"" if l.nil?
+  l.click
 end
 
 When /^(?:|I )fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|

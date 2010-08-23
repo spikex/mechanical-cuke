@@ -10,3 +10,5 @@ Feature: Missing Fields
     When I check a nonexistent check box an error should be raised
     When I press a nonexistent button an error should be raised
     When I select a missing option from an existing select an error should be raised
+    When I follow a nonexistent link an error should be raised
+

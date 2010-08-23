@@ -25,6 +25,12 @@ When /^I (?:fill in|select|choose|check|press) a nonexistent (.+) an error shoul
   end
 end
 
+When /^I follow a nonexistent link an error should be raised$/ do 
+  assert_raise(RuntimeError) do
+    When %{I follow "nonexistent"}
+  end
+end
+
 When /^I select a missing option from an existing select an error should be raised$/ do
   assert_raise(RuntimeError) do
     When %{I select "nonexistent" from "Exists"}
