@@ -2,17 +2,24 @@ h1. Mechanical Cuke
 
 mechanical-cuke re-implements the Cucumber step definitions provided by cucumber-rails' web_steps.rb in Mechanize.  This allows Cucumber features to be written for any site by running the tests over HTTP.
 
+mechanical-cuke also provides a driver for Capybara with enough support to run the cucumber-rails web_steps.rb.  This allows you use Mechanize in conjunction with Capybara other drivers (handy if you need to do some Javascript testing).
+
 h2. Rational
 
 Webrat and Capybara both can drive tests over HTML.  However, Webrat's Mechanize support is limited (doesn't work with multipart forms, can't submit empty form fields, no support for basic auth).  Capybara drives tests over HTTP using browsers, excellent for testing Javascript, but slow for test that only involve HTML.
 
 h2. Usage
 
-Add:
+To use the standalone version of Mechanical Cuke add:
 
-  require 'mechanical-cuke'
+bc. require 'mechanical-cuke'
 
 to features/support/env.rb
+
+To use Mechanical Cuke with Capybara add:
+
+bc. require 'mechanical-cuke/capybara'
+Capybara.default_driver = :mechanical_cuke
 
 In features/support/paths.rb you will need to make sure you are returning the full URL.  The simplest way to do this is to add 'URL' + before the case statement in the path_to function e.g.:
 
@@ -25,7 +32,7 @@ bc. def path_to(page_name)
    'http://localhost:3000' +
     case page_name
 
-h2. Steps Provided
+h2. Steps Provided by the Standalone Version
 
 bc. Given am on path
 When I go to path
@@ -115,6 +122,8 @@ Add scopes to allow steps to function within an element e.g:
 bc. When I press "Submit" within "#login_form"
 
 Make Rspec support actually work.
+
+Make Capybara driver complete.
 
 h2. Author
 

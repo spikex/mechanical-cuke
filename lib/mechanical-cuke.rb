@@ -1,5 +1,4 @@
 require 'mechanize'
-require 'mechanical-cuke/web_steps'
 require 'mechanical-cuke/save_and_open'
 
 module MechanicalCuke
@@ -26,18 +25,21 @@ module MechanicalCuke
     current_page.body
   end
 
+  def body
+    current_page.body
+  end
+
+  def form
+    current_page.forms.first
+  end
+
   def basic_auth(username,password)
     mechanize.basic_auth(username,password)
   end
 end
 
-World(MechanicalCuke)
-
 private
  
-def form
-  current_page.forms.first
-end
 
 def find_by_id(id)
   node = current_page.search("##{id}")
@@ -99,4 +101,9 @@ def find_checkbox(field)
   end
 
   return nil
+end
+
+unless defined?(Capybara)
+  require 'mechanical-cuke/web_steps'
+  World(MechanicalCuke)
 end

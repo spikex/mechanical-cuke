@@ -17,6 +17,7 @@ begin
     gem.add_development_dependency "cucumber-rails", ">= 0.2.4"
     gem.add_development_dependency "mocha", ">= 0.9.8"
     gem.add_development_dependency "sinatra", ">= 1.0"
+    gem.add_development_dependency "capybara", "0.3.9"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
@@ -54,6 +55,15 @@ begin
   Cucumber::Rake::Task.new(:wip, 'Run features that are in progress') do |t| 
     t.cucumber_opts = "--tags @wip:3 --wip features"
   end
+
+  Cucumber::Rake::Task.new(:capybara, 'Run features against Capybara') do |t| 
+    t.cucumber_opts = "CAPYBARA=yes"
+  end
+
+  Cucumber::Rake::Task.new('capybara:wip', 'Run features @wip against Capybara') do |t| 
+    t.cucumber_opts = "CAPYBARA=yes --tags @wip:3 --wip features"
+  end
+
 rescue LoadError
   task :cucumber do
     abort "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"

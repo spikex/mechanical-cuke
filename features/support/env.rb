@@ -1,10 +1,16 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
+require 'open4'
 
-require 'mechanical-cuke'
+if ENV['CAPYBARA']
+  require 'capybara/cucumber'
+  require 'mechanical-cuke/capybara'
+  Capybara.default_driver = :mechanical_cuke
+  Capybara.save_and_open_page_path = File.dirname(__FILE__) + '/../../tmp'
+else
+  require 'mechanical-cuke'
+end
 
 require 'test/unit/assertions'
-
-require 'open4'
 
 World(Test::Unit::Assertions)
 
